@@ -6,7 +6,7 @@ import (
 	"net"
 	"strconv"
 
-	"github.com/tomcyr/nolfix/msg"
+	"github.com/tomcyr/nolfix-go/msg"
 )
 
 // Sender can connect, send FIXML messages, and disconnect.

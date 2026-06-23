@@ -1,7 +1,7 @@
 // /home/tomcyr/code/nolfix/request_reply.go
 package nolfix
 
-import "github.com/tomcyr/nolfix/msg"
+import "github.com/tomcyr/nolfix-go/msg"
 
 // NolRequestReplyClient sends a message and returns the response in a single call.
 type NolRequestReplyClient struct {

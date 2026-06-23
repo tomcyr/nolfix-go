@@ -4,7 +4,7 @@ package nolfix_test
 import (
 	"testing"
 
-	nolfix "github.com/tomcyr/nolfix"
+	nolfix "github.com/tomcyr/nolfix-go"
 )
 
 // staticIDGenerator returns a fixed ID for testing.

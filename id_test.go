@@ -3,7 +3,7 @@ package nolfix_test
 
 import (
 	"testing"
-	nolfix "github.com/tomcyr/nolfix"
+	nolfix "github.com/tomcyr/nolfix-go"
 )
 
 func TestUUIDGeneratorProducesNonEmptyStrings(t *testing.T) {

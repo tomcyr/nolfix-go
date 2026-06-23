@@ -6,7 +6,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/tomcyr/nolfix/msg"
+	"github.com/tomcyr/nolfix-go/msg"
 )
 
 func TestSerializeDeserializeRoundtrip(t *testing.T) {

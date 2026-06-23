@@ -3,7 +3,7 @@ package msg_test
 import (
 	"encoding/xml"
 	"testing"
-	"github.com/tomcyr/nolfix/msg"
+	"github.com/tomcyr/nolfix-go/msg"
 )
 
 func TestTradingSessionStatusRequestRoundtrip(t *testing.T) {

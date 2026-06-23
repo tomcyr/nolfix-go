@@ -4,7 +4,7 @@ import (
 	"encoding/xml"
 	"testing"
 
-	"github.com/tomcyr/nolfix/msg"
+	"github.com/tomcyr/nolfix-go/msg"
 )
 
 func TestSecurityListRequestRoundtrip(t *testing.T) {

@@ -8,8 +8,8 @@ import (
 	"os/signal"
 	"syscall"
 
-	nolfix "github.com/tomcyr/nolfix"
-	"github.com/tomcyr/nolfix/msg"
+	nolfix "github.com/tomcyr/nolfix-go"
+	"github.com/tomcyr/nolfix-go/msg"
 )
 
 func main() {

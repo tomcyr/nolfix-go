@@ -1,7 +1,7 @@
 // /home/tomcyr/code/nolfix/factory.go
 package nolfix
 
-import "github.com/tomcyr/nolfix/msg"
+import "github.com/tomcyr/nolfix-go/msg"
 
 // RequestFactory creates typed FIXML request objects with auto-generated IDs.
 type RequestFactory struct {

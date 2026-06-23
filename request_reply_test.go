@@ -6,8 +6,8 @@ import (
 	"net"
 	"testing"
 
-	nolfix "github.com/tomcyr/nolfix"
-	"github.com/tomcyr/nolfix/msg"
+	nolfix "github.com/tomcyr/nolfix-go"
+	"github.com/tomcyr/nolfix-go/msg"
 )
 
 // startEchoServer runs a goroutine that reads one message via simulateServerReceive

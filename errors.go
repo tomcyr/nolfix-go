@@ -3,7 +3,7 @@ package nolfix
 
 import (
 	"fmt"
-	"github.com/tomcyr/nolfix/msg"
+	"github.com/tomcyr/nolfix-go/msg"
 )
 
 type NolConnectionError struct {

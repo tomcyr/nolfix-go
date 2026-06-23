@@ -48,8 +48,8 @@ const (
 
 // UserStatText values for UserResponse.UserStatText.
 const (
-	UserStatTextNol3Closed   = 1
-	UserStatTextNol3Offline  = 2
-	UserStatTextNol3Online   = 3
-	UserStatTextNol3Disabled = 4
+	UserStatTextNol3Closed   = "1"
+	UserStatTextNol3Offline  = "2"
+	UserStatTextNol3Online   = "3"
+	UserStatTextNol3Disabled = "4"
 )

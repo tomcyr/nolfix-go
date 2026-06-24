@@ -102,7 +102,9 @@ func (c *NolClient) Receive() (*msg.Fixml, error) {
 
 	size := int(header[0]) + int(header[1])*256 + int(header[2])*65536
 	if size == 0 {
-		return &msg.Fixml{}, nil
+		f := msg.NewFixml()
+		f.Heartbeats = []msg.Heartbeat{{}}
+		return f, nil
 	}
 
 	buf := make([]byte, size)

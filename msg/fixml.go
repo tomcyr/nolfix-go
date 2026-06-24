@@ -109,7 +109,7 @@ func (f *Fixml) Unpack() (FixmlMessage, error) {
 	case len(f.ApplMsgRpts) > 0:
 		return f.ApplMsgRpts[0], nil
 	default:
-		return nil, &FixmlElementNotFoundError{Msg: "FIXML Message has no content!"}
+		return nil, &FixmlElementNotFoundError{Msg: "FIXML Message has no content! Raw: " + f.RawMessage}
 	}
 }
 

@@ -5,6 +5,9 @@ import (
 	"io"
 	"net"
 	"strconv"
+	"unicode/utf8"
+
+	"golang.org/x/text/encoding/charmap"
 
 	"github.com/tomcyr/nolfix-go/msg"
 )
@@ -110,7 +113,16 @@ func (c *NolClient) Receive() (*msg.Fixml, error) {
 		buf = buf[:len(buf)-1]
 	}
 
-	rawXML := string(buf)
+	var rawXML string
+	if utf8.Valid(buf) {
+		rawXML = string(buf)
+	} else {
+		decoded, err := charmap.Windows1250.NewDecoder().Bytes(buf)
+		if err != nil {
+			return nil, &NolConnectionError{Cause: err}
+		}
+		rawXML = string(decoded)
+	}
 	f, err := msg.Deserialize(rawXML)
 	if err != nil {
 		return nil, &NolConnectionError{Cause: err}

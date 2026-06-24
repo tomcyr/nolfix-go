@@ -27,7 +27,7 @@ func TestTradingSessionStatusRequestRoundtrip(t *testing.T) {
 func TestTradingSessionStatusRoundtrip(t *testing.T) {
 	orig := msg.TradingSessionStatus{
 		ReqID:  "1",
-		SesSub: "COCO",
+		SesSub: msg.SessionPhaseContinuous,
 		Instrmts: []msg.Instrument{
 			{Sym: "TPSA", ID: "PLTLKPL00017", Src: intPtr(4)},
 		},

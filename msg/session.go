@@ -10,18 +10,15 @@ const (
 
 // SessionPhase values for TradingSessionStatus.SesSub.
 const (
-	SessionPhaseHalted             = "HALT"
-	SessionPhaseEarlyMonitoring    = "EAMO"
-	SessionPhaseCoreCall           = "COCA"
-	SessionPhaseCoreAuction        = "COAU"
-	SessionPhaseCoreContiguous     = "COCO"
-	SessionPhaseClosingCall        = "CLCA"
-	SessionPhaseClosingAuction     = "CLAU"
-	SessionPhaseLateTradingAtLast  = "LTAL"
-	SessionPhaseCoreTradingAtLast  = "CTAL"
-	SessionPhaseCoreMonitoring     = "COMO"
-	SessionPhaseLateMonitoring     = "LAMO"
-	SessionPhaseClosed             = "CLSD"
+	SessionPhaseConsultation          = "C" // Konsultacja nadzoru
+	SessionPhasePreOpen               = "P" // Przed otwarciem
+	SessionPhaseIntervention          = "E" // Interwencja
+	SessionPhaseOpening               = "O" // Otwarcie
+	SessionPhasePlayOff               = "R" // Dogrywka
+	SessionPhaseContinuous            = "S" // Sesja notowań ciągłych
+	SessionPhaseRegulatoryIntervention = "N" // Interwencja nadzoru
+	SessionPhaseClosingConsultation   = "F" // Konsultacja nadzoru (zamknięcie)
+	SessionPhasePostSession           = "B" // Po sesji
 )
 
 // SessionState values for TradingSessionStatus.Stat.

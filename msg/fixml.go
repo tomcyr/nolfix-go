@@ -55,6 +55,7 @@ type Fixml struct {
 	SecLists             []SecurityList                  `xml:"SecList"`
 	TrdgSesStats         []TradingSessionStatus          `xml:"TrdgSesStat"`
 	ExecRpts             []ExecutionReport               `xml:"ExecRpt"`
+	OrdCxlRejs          []OrderCancelReject             `xml:"OrdCxlRej"`
 	Heartbeats           []Heartbeat                     `xml:"Heartbeat"`
 	NewsList             []News                          `xml:"News"`
 	Statements           []Statement                     `xml:"Statement"`
@@ -97,6 +98,8 @@ func (f *Fixml) Unpack() (FixmlMessage, error) {
 		return f.TrdgSesStats[0], nil
 	case len(f.ExecRpts) > 0:
 		return f.ExecRpts[0], nil
+	case len(f.OrdCxlRejs) > 0:
+		return f.OrdCxlRejs[0], nil
 	case len(f.Heartbeats) > 0:
 		return f.Heartbeats[0], nil
 	case len(f.NewsList) > 0:

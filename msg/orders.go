@@ -210,3 +210,18 @@ type ExecutionReport struct {
 }
 
 func (e ExecutionReport) MsgName() string { return "ExecRpt" }
+
+// OrderCancelReject is the negative response to a cancel or replace request (<OrdCxlRej>).
+type OrderCancelReject struct {
+	XMLName   xml.Name `xml:"OrdCxlRej"`
+	OrdID     string   `xml:"OrdID,attr,omitempty"`
+	OrdID2    string   `xml:"OrdID2,attr,omitempty"`
+	ID        string   `xml:"ID,attr,omitempty"`
+	OrigID    string   `xml:"OrigID,attr,omitempty"`
+	Stat      string   `xml:"Stat,attr,omitempty"`
+	CxlRejRsn *int    `xml:"CxlRejRsn,attr,omitempty"`
+	Acct      string   `xml:"Acct,attr,omitempty"`
+	Txt       string   `xml:"Txt,attr,omitempty"`
+}
+
+func (o OrderCancelReject) MsgName() string { return "OrdCxlRej" }

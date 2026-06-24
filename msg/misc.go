@@ -19,14 +19,14 @@ type News struct {
 
 func (n News) MsgName() string { return "News" }
 
-// ApplMsgRpt reports message delivery delay (<AppIMsgRpt>).
+// ApplMsgRpt reports message delivery delay (<ApplMsgRpt>).
 type ApplMsgRpt struct {
-	XMLName   xml.Name `xml:"AppIMsgRpt"`
-	AppIRepID string   `xml:"AppIRepID,attr,omitempty"`
+	XMLName   xml.Name `xml:"ApplMsgRpt"`
+	ApplRepID string   `xml:"ApplRepID,attr,omitempty"`
 	Txt       string   `xml:"Txt,attr,omitempty"`
 }
 
-func (a ApplMsgRpt) MsgName() string { return "AppIMsgRpt" }
+func (a ApplMsgRpt) MsgName() string { return "ApplMsgRpt" }
 
 // Fund holds a named financial value in a Statement (<Fund>).
 type Fund struct {

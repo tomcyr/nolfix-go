@@ -35,7 +35,7 @@ func TestNewsRoundtrip(t *testing.T) {
 }
 
 func TestApplMsgRptRoundtrip(t *testing.T) {
-	orig := msg.ApplMsgRpt{AppIRepID: "1", Txt: "22"}
+	orig := msg.ApplMsgRpt{ApplRepID: "1", Txt: "22"}
 	b, err := xml.Marshal(&orig)
 	if err != nil {
 		t.Fatal(err)
@@ -44,7 +44,7 @@ func TestApplMsgRptRoundtrip(t *testing.T) {
 	if err := xml.Unmarshal(b, &got); err != nil {
 		t.Fatal(err)
 	}
-	if got.AppIRepID != orig.AppIRepID || got.Txt != orig.Txt {
+	if got.ApplRepID != orig.ApplRepID || got.Txt != orig.Txt {
 		t.Errorf("roundtrip mismatch: got %+v, want %+v", got, orig)
 	}
 }

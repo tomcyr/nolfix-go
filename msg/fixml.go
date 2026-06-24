@@ -59,7 +59,7 @@ type Fixml struct {
 	Heartbeats           []Heartbeat                     `xml:"Heartbeat"`
 	NewsList             []News                          `xml:"News"`
 	Statements           []Statement                     `xml:"Statement"`
-	ApplMsgRpts          []ApplMsgRpt                    `xml:"AppIMsgRpt"`
+	ApplMsgRpts          []ApplMsgRpt                    `xml:"ApplMsgRpt"`
 }
 
 // Unpack extracts the single inner message from this Fixml envelope.

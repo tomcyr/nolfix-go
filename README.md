@@ -16,7 +16,7 @@ go get github.com/tomcyr/nolfix-go
 ## Quick start
 
 ```go
-factory := nolfix.NewRequestFactory(nolfix.UUIDGenerator{})
+factory := nolfix.NewRequestFactory(&nolfix.IntGenerator{})
 client  := nolfix.NewNolRequestReplyClient(nolfix.Host, nolfix.SyncPort)
 
 // Login
@@ -40,7 +40,7 @@ See [cmd/example/main.go](cmd/example/main.go) for a runnable demo covering logi
 nolfix/
 ├── settings.go        # Default connection constants (Host, SyncPort, AsyncPort, …)
 ├── limits.go          # API limits (max securities in filter, max orders/day, …)
-├── id.go              # IdGenerator interface + UUIDGenerator
+├── id.go              # IdGenerator interface + IntGenerator
 ├── client.go          # NolClient — raw TCP send/receive (Sender + Receiver interfaces)
 ├── request_reply.go   # NolRequestReplyClient — one-call sync send+receive
 ├── factory.go         # RequestFactory — creates pre-stamped request structs
@@ -135,7 +135,7 @@ client.Disconnect()
 
 ```go
 type MyIDGen struct{ n int }
-func (g *MyIDGen) NextID() string { g.n++; return strconv.Itoa(g.n) }
+func (g *MyIDGen) NextID() int { g.n++; return g.n }
 
 factory := nolfix.NewRequestFactory(&MyIDGen{})
 ```
@@ -167,8 +167,7 @@ case errors.As(err, &conErr):
 
 The Nol3 protocol is **asymmetric**:
 
-- **Send** (client → server): ASCII decimal length string, then XML payload + null byte.
-- **Receive** (server → client): 4-byte header (little-endian uint24 in bytes 0–2 = message size), then XML payload + null byte.
+Both directions use the same framing: 4-byte little-endian header where bits 0–23 encode the payload length (bits 24–31 reserved/zero), followed by the XML payload terminated with a null byte.
 
 ## Default connection settings
 

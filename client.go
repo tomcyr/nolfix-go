@@ -72,15 +72,17 @@ func (c *NolClient) Send(f *msg.Fixml) error {
 }
 
 // SendRaw writes a raw XML string to the server using the Nol3 wire format:
-// ASCII decimal length of (payload+null), then the payload bytes, then a null byte.
+// 4-byte little-endian binary header where bits 0-23 encode the payload length
+// (bits 24-31 are reserved/zero), followed by the payload bytes and a null terminator.
 func (c *NolClient) SendRaw(rawMsg string) error {
 	msgBytes := []byte(rawMsg)
 	payload := make([]byte, len(msgBytes)+1) // +1 for null terminator
 	copy(payload, msgBytes)
 	// payload[len(msgBytes)] is already 0 (zero-initialized)
 
-	sizeStr := strconv.Itoa(len(payload))
-	if _, err := c.conn.Write([]byte(sizeStr)); err != nil {
+	size := len(payload)
+	header := [4]byte{byte(size), byte(size >> 8), byte(size >> 16), 0}
+	if _, err := c.conn.Write(header[:]); err != nil {
 		return &NolConnectionError{Cause: err}
 	}
 	if _, err := c.conn.Write(payload); err != nil {

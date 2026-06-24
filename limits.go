@@ -3,6 +3,6 @@ package nolfix
 
 const (
 	MaxSecuritiesInFilter = 100
-	MaxOrdersPerInterval  = 8
+	MaxOrdersPerInterval  = 12
 	MaxOpsPerDay          = 2000
 )

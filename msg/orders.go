@@ -22,7 +22,14 @@ const (
 // TimeInForce values.
 const (
 	TimeInForceDay          = '0'
+	TimeInForceGTC          = '1'
+	TimeInForceBeforeOpen   = '2'
+	TimeInForceWiA          = '3'
+	TimeInForceWuA          = '4'
 	TimeInForceGoodTillDate = '6'
+	TimeInForceAtClose      = '7'
+	TimeInForceNextFixing   = 'f'
+	TimeInForceGoodTillTime = 't'
 )
 
 // OrderStatus values for ExecutionReport.Stat.
@@ -193,7 +200,7 @@ type ExecutionReport struct {
 	TxnTm       string                  `xml:"TxnTm,attr,omitempty"`
 	NetMny      *float32                `xml:"NetMny,attr,omitempty"`
 	MinQty      *float32                `xml:"MinQty,attr,omitempty"`
-	Text        string                  `xml:"Text,attr,omitempty"`
+	Txt         string                  `xml:"Txt,attr,omitempty"`
 	DefPayTyp   string                  `xml:"DefPayTyp,attr,omitempty"`
 	Instrmts    []Instrument            `xml:"Instrmt"`
 	OrdQty      *OrderQtyData           `xml:"OrdQty"`

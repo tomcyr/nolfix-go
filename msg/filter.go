@@ -71,7 +71,7 @@ type MdIncGrp struct {
 	Typ       string       `xml:"Typ,attr,omitempty"`
 	Px        string       `xml:"Px,attr,omitempty"`
 	MdPxLv    *int         `xml:"MDPxLvl,attr,omitempty"`
-	Ccy       *float32     `xml:"Ccy,attr,omitempty"`
+	Ccy       string       `xml:"Ccy,attr,omitempty"`
 	Sz        *float32     `xml:"Sz,attr,omitempty"`
 	NumOfOrds *int         `xml:"NumOfOrds,attr,omitempty"`
 	Dt        string       `xml:"Dt,attr,omitempty"`

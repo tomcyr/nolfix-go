@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"io"
 	"net"
-	"strconv"
 	"testing"
 
 	nolfix "github.com/tomcyr/nolfix-go"
@@ -13,32 +12,21 @@ import (
 )
 
 // simulateServerReceive reads one message from conn as the NOL3 server would:
-// read ASCII size digits (until non-digit byte from message start '<'), then read payload.
+// 4-byte binary header (bytes 0-2 = little-endian uint24 payload length), then payload.
 func simulateServerReceive(conn net.Conn) (string, error) {
-	// read digits until we see '<'
-	var sizeStr []byte
-	buf := make([]byte, 1)
-	for {
-		if _, err := conn.Read(buf); err != nil {
-			return "", err
-		}
-		if buf[0] == '<' {
-			break
-		}
-		sizeStr = append(sizeStr, buf[0])
-	}
-	size, _ := strconv.Atoi(string(sizeStr))
-	// we already consumed '<', so read size-1 more bytes (size includes null byte; '<' is 1 byte already read)
-	rest := make([]byte, size-1)
-	if _, err := io.ReadFull(conn, rest); err != nil {
+	header := make([]byte, 4)
+	if _, err := io.ReadFull(conn, header); err != nil {
 		return "", err
 	}
-	// full xml = '<' + rest (strip trailing null)
-	full := append([]byte{'<'}, rest...)
-	if full[len(full)-1] == 0 {
-		full = full[:len(full)-1]
+	size := int(header[0]) + int(header[1])*256 + int(header[2])*65536
+	buf := make([]byte, size)
+	if _, err := io.ReadFull(conn, buf); err != nil {
+		return "", err
 	}
-	return string(full), nil
+	if len(buf) > 0 && buf[len(buf)-1] == 0 {
+		buf = buf[:len(buf)-1]
+	}
+	return string(buf), nil
 }
 
 // simulateServerSend sends one message from server using binary header (NOL3 format).

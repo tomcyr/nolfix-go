@@ -34,22 +34,25 @@ type UserResponse struct {
 
 func (u UserResponse) MsgName() string { return "UserRsp" }
 
-// UserStatus values for UserResponse.UserStat.
+// UserStatus values for UserResponse.UserStat (login/logout response).
 const (
-	UserStatusLoggedIn      = 1
-	UserStatusLoggedOut     = 2
-	UserStatusNotExists     = 3
-	UserStatusWrongPasswd   = 4
-	UserStatusPasswdChanged = 5
-	UserStatusOther         = 6
-	UserStatusStockLogout   = 7
-	UserStatusSessionClosed = 8
+	UserStatusLoggedIn        = 1
+	UserStatusLoggedOut       = 2
+	UserStatusNotExists       = 3
+	UserStatusWrongPasswd     = 4
+	UserStatusInvestorOffline = 5
+	UserStatusOther           = 6
+	UserStatusNolOffline      = 7
+	UserStatusSessionClosed   = 8
 )
 
-// UserStatText values for UserResponse.UserStatText.
+// UserStatText values for UserResponse.UserStatText (async connection state).
 const (
-	UserStatTextNol3Closed   = "1"
-	UserStatTextNol3Offline  = "2"
-	UserStatTextNol3Online   = "3"
-	UserStatTextNol3Disabled = "4"
+	UserStatTextNol3Closed              = "1"
+	UserStatTextNol3Offline             = "2"
+	UserStatTextNol3Online              = "3"
+	UserStatTextNol3Disabled            = "4"
+	UserStatTextInvestorOffline         = "5"
+	UserStatTextConnecting              = "6"
+	UserStatTextConnectingInvestorOffline = "7"
 )

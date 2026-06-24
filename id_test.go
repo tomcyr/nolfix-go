@@ -1,19 +1,19 @@
-// /home/tomcyr/code/nolfix/id_test.go
 package nolfix_test
 
 import (
 	"testing"
+
 	nolfix "github.com/tomcyr/nolfix-go"
 )
 
-func TestUUIDGeneratorProducesNonEmptyStrings(t *testing.T) {
-	gen := nolfix.UUIDGenerator{}
+func TestIntGeneratorProducesSequentialIDs(t *testing.T) {
+	gen := &nolfix.IntGenerator{}
 	id1 := gen.NextID()
 	id2 := gen.NextID()
-	if id1 == "" {
-		t.Error("expected non-empty ID")
+	if id1 != 1 {
+		t.Errorf("expected first ID=1, got %d", id1)
 	}
-	if id1 == id2 {
-		t.Errorf("expected unique IDs, got same: %s", id1)
+	if id2 != 2 {
+		t.Errorf("expected second ID=2, got %d", id2)
 	}
 }

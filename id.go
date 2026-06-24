@@ -1,12 +1,15 @@
-// /home/tomcyr/code/nolfix/id.go
 package nolfix
 
-import "github.com/google/uuid"
+import "sync/atomic"
 
 type IdGenerator interface {
-	NextID() string
+	NextID() int
 }
 
-type UUIDGenerator struct{}
+type IntGenerator struct {
+	counter atomic.Int64
+}
 
-func (UUIDGenerator) NextID() string { return uuid.New().String() }
+func (g *IntGenerator) NextID() int {
+	return int(g.counter.Add(1))
+}

@@ -13,7 +13,7 @@ import (
 )
 
 func main() {
-	factory := nolfix.NewRequestFactory(nolfix.UUIDGenerator{})
+	factory := nolfix.NewRequestFactory(&nolfix.IntGenerator{})
 	syncClient := nolfix.NewNolRequestReplyClient(nolfix.Host, nolfix.SyncPort)
 
 	login(factory, syncClient)
